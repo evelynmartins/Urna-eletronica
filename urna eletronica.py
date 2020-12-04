@@ -24,7 +24,11 @@ votantes=[]
 
 while True:
     tit=int(input("Digite o número do título de eleitor: "))
-    if tit not in todxeleitores:
+
+    if tit == 0:
+     break
+
+    elif tit not in todxeleitores:
      tit=int(input("Título inválido. Digite o número do título de eleitor válido: "))        
     
     elif tit in todxeleitores and tit not in eleitoresconsulta:
@@ -32,9 +36,8 @@ while True:
     
     elif tit not in eleitores and tit in votantes:
      tit=int(input("Eleitor já votou. Digite o número de um título de eleitor válido: "))        
-    elif tit == 0:
-     break
-    else:      
+   
+    elif tit in eleitores:     
      print("Eleitor válido. Siga para a urna eletronica.")
    
     votantes.append(tit)
@@ -73,7 +76,7 @@ while True:
 
 ele=len(eleitores)+len(votantes)
 total=(Boulos+Ciro+Moro+Brancop+nulop)
-Abstenção=len(eleitores)-total
+Abstenção=ele-total
 vot=len(votantes)
 print("Apuração:")
 print("--------------------------------")
@@ -101,5 +104,5 @@ print("Tivemos %d abstênções." %Abstenção)
 
 
 #falta:
-# consultar se é valido mas pertence a outra sessão
+#consultar novamente quando digitado depois do erro
 # calcular os percentuais
